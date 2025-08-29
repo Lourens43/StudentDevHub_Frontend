@@ -23,11 +23,18 @@ export default function Index() {
             Learn programming through structured roadmaps and practical projects
           </p>
 
-          <Button size="lg" className="px-8 py-3" asChild>
-            <Link to="/tracks">
-              Start Learning <ArrowRight className="ml-2 w-5 h-5" />
-            </Link>
-          </Button>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button size="lg" className="px-8 py-3" asChild>
+              <Link to="/login">
+                Get Started <ArrowRight className="ml-2 w-5 h-5" />
+              </Link>
+            </Button>
+            <Button size="lg" variant="outline" className="px-8 py-3" asChild>
+              <Link to="/tracks">
+                Browse Tracks
+              </Link>
+            </Button>
+          </div>
         </div>
       </section>
 

@@ -8,12 +8,24 @@ import {
   Shield
 } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useUser } from "@/contexts/UserContext";
 
 export default function Dashboard() {
+  const { user } = useUser();
+
   return (
     <Layout>
       <div className="container mx-auto px-4 py-8">
-        <h1 className="text-3xl font-bold mb-8">Your Progress</h1>
+        <div className="mb-8">
+          <h1 className="text-3xl font-bold">
+            {user ? `Welcome back, ${user.firstName}!` : "Your Progress"}
+          </h1>
+          {user && (
+            <p className="text-gray-600 mt-2">
+              Student at {user.university} • Joined {new Date(user.joinedAt).toLocaleDateString()}
+            </p>
+          )}
+        </div>
 
         <div className="grid md:grid-cols-3 gap-6 mb-8">
           <Card>

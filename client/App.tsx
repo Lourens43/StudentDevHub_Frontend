@@ -38,6 +38,7 @@ const App = () => (
             {/* Main Pages */}
             <Route path="/" element={<Index />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/profile" element={<Profile />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/tracks" element={<Tracks />} />
             <Route path="/resources" element={<Resources />} />

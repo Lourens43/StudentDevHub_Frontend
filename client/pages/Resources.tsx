@@ -15,35 +15,83 @@ export default function Resources() {
   const mockResources = [
     {
       id: 1,
-      title: "Java Documentation",
-      description: "Official Java programming guide",
+      title: "Java Programming Full Course",
+      description: "Complete Java tutorial from basics to advanced concepts",
       track: "Java",
-      provider: "Oracle",
-      url: "#"
+      provider: "Programming with Mosh",
+      url: "https://www.youtube.com/watch?v=eIrMbAQSU34"
     },
     {
       id: 2,
-      title: "React Tutorial",
-      description: "Learn React from scratch",
+      title: "React Course - Beginner's Tutorial",
+      description: "Learn React from scratch with practical projects",
       track: "Frontend",
-      provider: "YouTube",
-      url: "#"
+      provider: "freeCodeCamp",
+      url: "https://www.youtube.com/watch?v=bMknfKXIFA8"
     },
     {
       id: 3,
-      title: "Security Fundamentals",
-      description: "Introduction to cybersecurity",
+      title: "Ethical Hacking Full Course",
+      description: "Complete cybersecurity and ethical hacking course",
       track: "Cybersecurity",
-      provider: "Udemy",
-      url: "#"
+      provider: "edureka!",
+      url: "https://www.youtube.com/watch?v=fNzpcB7ODxQ"
     },
     {
       id: 4,
-      title: "Spring Boot Guide",
-      description: "Build apps with Spring Boot",
+      title: "Spring Boot Tutorial",
+      description: "Build REST APIs with Spring Boot and Java",
       track: "Java",
-      provider: "Baeldung",
-      url: "#"
+      provider: "Java Brains",
+      url: "https://www.youtube.com/watch?v=vtPkZShrvXQ"
+    },
+    {
+      id: 5,
+      title: "JavaScript Full Course",
+      description: "Master JavaScript fundamentals for web development",
+      track: "Frontend",
+      provider: "freeCodeCamp",
+      url: "https://www.youtube.com/watch?v=PkZNo7MFNFg"
+    },
+    {
+      id: 6,
+      title: "HTML & CSS Full Course",
+      description: "Complete HTML and CSS tutorial for beginners",
+      track: "Frontend",
+      provider: "freeCodeCamp",
+      url: "https://www.youtube.com/watch?v=mU6anWqZJcc"
+    },
+    {
+      id: 7,
+      title: "Kali Linux Tutorial",
+      description: "Learn penetration testing with Kali Linux",
+      track: "Cybersecurity",
+      provider: "NetworkChuck",
+      url: "https://www.youtube.com/watch?v=fKuqYQdqRIs"
+    },
+    {
+      id: 8,
+      title: "TypeScript Course",
+      description: "Learn TypeScript for better JavaScript development",
+      track: "Frontend",
+      provider: "Traversy Media",
+      url: "https://www.youtube.com/watch?v=BCg4U1FzODs"
+    },
+    {
+      id: 9,
+      title: "Java Spring Framework",
+      description: "Complete Spring Framework tutorial with examples",
+      track: "Java",
+      provider: "Telusko",
+      url: "https://www.youtube.com/watch?v=If1Lw4pLLEo"
+    },
+    {
+      id: 10,
+      title: "Network Security Basics",
+      description: "Understanding network security fundamentals",
+      track: "Cybersecurity",
+      provider: "Professor Messer",
+      url: "https://www.youtube.com/watch?v=qiQR5rTSshw"
     }
   ];
 

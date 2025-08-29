@@ -12,6 +12,7 @@ import { UserProvider } from "@/contexts/UserContext";
 // Page imports
 import Index from "./pages/Index";
 import Login from "./pages/Login";
+import Profile from "./pages/Profile";
 import Dashboard from "./pages/Dashboard";
 import Tracks from "./pages/Tracks";
 import Resources from "./pages/Resources";

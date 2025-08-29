@@ -52,7 +52,6 @@ const App = () => (
 
             {/* Placeholder routes for future features */}
             <Route path="/tips" element={<Placeholder title="Documentation Tips" description="Learn how to read and interpret technical documentation effectively." />} />
-            <Route path="/profile" element={<Placeholder title="User Profile" description="Manage your learning profile and preferences." />} />
             <Route path="/settings" element={<Placeholder title="Settings" description="Customize your StudentDev Hub experience." />} />
 
             {/* Catch-all route */}

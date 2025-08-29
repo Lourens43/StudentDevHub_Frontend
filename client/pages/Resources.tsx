@@ -1,15 +1,15 @@
 import { Layout } from "@/components/Layout";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
-import {
-  Search,
-  ExternalLink,
-  Coffee,
-  Laptop,
-  Shield
-} from "lucide-react";
+import { Search, ExternalLink, Coffee, Laptop, Shield } from "lucide-react";
 
 export default function Resources() {
   const mockResources = [
@@ -19,7 +19,7 @@ export default function Resources() {
       description: "Complete Java tutorial from basics to advanced concepts",
       track: "Java",
       provider: "Programming with Mosh",
-      url: "https://www.youtube.com/watch?v=eIrMbAQSU34"
+      url: "https://www.youtube.com/watch?v=eIrMbAQSU34",
     },
     {
       id: 2,
@@ -27,7 +27,7 @@ export default function Resources() {
       description: "Learn React from scratch with practical projects",
       track: "Frontend",
       provider: "freeCodeCamp",
-      url: "https://www.youtube.com/watch?v=bMknfKXIFA8"
+      url: "https://www.youtube.com/watch?v=bMknfKXIFA8",
     },
     {
       id: 3,
@@ -35,7 +35,7 @@ export default function Resources() {
       description: "Complete cybersecurity and ethical hacking course",
       track: "Cybersecurity",
       provider: "edureka!",
-      url: "https://www.youtube.com/watch?v=fNzpcB7ODxQ"
+      url: "https://www.youtube.com/watch?v=fNzpcB7ODxQ",
     },
     {
       id: 4,
@@ -43,7 +43,7 @@ export default function Resources() {
       description: "Build REST APIs with Spring Boot and Java",
       track: "Java",
       provider: "Java Brains",
-      url: "https://www.youtube.com/watch?v=vtPkZShrvXQ"
+      url: "https://www.youtube.com/watch?v=vtPkZShrvXQ",
     },
     {
       id: 5,
@@ -51,7 +51,7 @@ export default function Resources() {
       description: "Master JavaScript fundamentals for web development",
       track: "Frontend",
       provider: "freeCodeCamp",
-      url: "https://www.youtube.com/watch?v=PkZNo7MFNFg"
+      url: "https://www.youtube.com/watch?v=PkZNo7MFNFg",
     },
     {
       id: 6,
@@ -59,7 +59,7 @@ export default function Resources() {
       description: "Complete HTML and CSS tutorial for beginners",
       track: "Frontend",
       provider: "freeCodeCamp",
-      url: "https://www.youtube.com/watch?v=mU6anWqZJcc"
+      url: "https://www.youtube.com/watch?v=mU6anWqZJcc",
     },
     {
       id: 7,
@@ -67,7 +67,7 @@ export default function Resources() {
       description: "Learn penetration testing with Kali Linux",
       track: "Cybersecurity",
       provider: "NetworkChuck",
-      url: "https://www.youtube.com/watch?v=fKuqYQdqRIs"
+      url: "https://www.youtube.com/watch?v=fKuqYQdqRIs",
     },
     {
       id: 8,
@@ -75,7 +75,7 @@ export default function Resources() {
       description: "Learn TypeScript for better JavaScript development",
       track: "Frontend",
       provider: "Traversy Media",
-      url: "https://www.youtube.com/watch?v=BCg4U1FzODs"
+      url: "https://www.youtube.com/watch?v=BCg4U1FzODs",
     },
     {
       id: 9,
@@ -83,7 +83,7 @@ export default function Resources() {
       description: "Complete Spring Framework tutorial with examples",
       track: "Java",
       provider: "Telusko",
-      url: "https://www.youtube.com/watch?v=If1Lw4pLLEo"
+      url: "https://www.youtube.com/watch?v=If1Lw4pLLEo",
     },
     {
       id: 10,
@@ -91,16 +91,20 @@ export default function Resources() {
       description: "Understanding network security fundamentals",
       track: "Cybersecurity",
       provider: "Professor Messer",
-      url: "https://www.youtube.com/watch?v=qiQR5rTSshw"
-    }
+      url: "https://www.youtube.com/watch?v=qiQR5rTSshw",
+    },
   ];
 
   const getTrackIcon = (track: string) => {
     switch (track) {
-      case "Java": return <Coffee className="w-4 h-4 text-orange-600" />;
-      case "Frontend": return <Laptop className="w-4 h-4 text-blue-600" />;
-      case "Cybersecurity": return <Shield className="w-4 h-4 text-red-600" />;
-      default: return null;
+      case "Java":
+        return <Coffee className="w-4 h-4 text-orange-600" />;
+      case "Frontend":
+        return <Laptop className="w-4 h-4 text-blue-600" />;
+      case "Cybersecurity":
+        return <Shield className="w-4 h-4 text-red-600" />;
+      default:
+        return null;
     }
   };
 
@@ -112,35 +116,37 @@ export default function Resources() {
         {/* Search */}
         <div className="relative mb-8 max-w-md">
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
-          <Input
-            placeholder="Search resources..."
-            className="pl-10"
-          />
+          <Input placeholder="Search resources..." className="pl-10" />
         </div>
 
         {/* Resources Grid */}
         <div className="grid md:grid-cols-2 gap-6">
           {mockResources.map((resource) => (
-            <Card key={resource.id} className="hover:shadow-md transition-shadow">
+            <Card
+              key={resource.id}
+              className="hover:shadow-md transition-shadow"
+            >
               <CardHeader>
                 <div className="flex items-center gap-2 mb-2">
                   {getTrackIcon(resource.track)}
-                  <Badge variant="outline">
-                    {resource.track}
-                  </Badge>
+                  <Badge variant="outline">{resource.track}</Badge>
                 </div>
 
                 <CardTitle className="text-lg">{resource.title}</CardTitle>
-                <CardDescription>
-                  {resource.description}
-                </CardDescription>
+                <CardDescription>{resource.description}</CardDescription>
               </CardHeader>
 
               <CardContent>
                 <div className="flex items-center justify-between">
-                  <span className="text-sm text-gray-600">by {resource.provider}</span>
+                  <span className="text-sm text-gray-600">
+                    by {resource.provider}
+                  </span>
                   <Button size="sm" variant="outline" asChild>
-                    <a href={resource.url} target="_blank" rel="noopener noreferrer">
+                    <a
+                      href={resource.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
                       View <ExternalLink className="w-3 h-3 ml-1" />
                     </a>
                   </Button>

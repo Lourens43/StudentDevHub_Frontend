@@ -48,11 +48,30 @@ const App = () => (
             {/* Learning Track Pages */}
             <Route path="/tracks/java" element={<JavaTrack />} />
             <Route path="/tracks/frontend" element={<FrontendTrack />} />
-            <Route path="/tracks/cybersecurity" element={<CybersecurityTrack />} />
+            <Route
+              path="/tracks/cybersecurity"
+              element={<CybersecurityTrack />}
+            />
 
             {/* Placeholder routes for future features */}
-            <Route path="/tips" element={<Placeholder title="Documentation Tips" description="Learn how to read and interpret technical documentation effectively." />} />
-            <Route path="/settings" element={<Placeholder title="Settings" description="Customize your StudentDev Hub experience." />} />
+            <Route
+              path="/tips"
+              element={
+                <Placeholder
+                  title="Documentation Tips"
+                  description="Learn how to read and interpret technical documentation effectively."
+                />
+              }
+            />
+            <Route
+              path="/settings"
+              element={
+                <Placeholder
+                  title="Settings"
+                  description="Customize your StudentDev Hub experience."
+                />
+              }
+            />
 
             {/* Catch-all route */}
             <Route path="*" element={<NotFound />} />

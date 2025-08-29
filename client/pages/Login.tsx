@@ -1,5 +1,11 @@
 import { useState, useEffect } from "react";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -12,7 +18,7 @@ export default function Login() {
     firstName: "",
     lastName: "",
     university: "",
-    email: ""
+    email: "",
   });
   const [isLoading, setIsLoading] = useState(false);
   const { user, login } = useUser();
@@ -21,7 +27,7 @@ export default function Login() {
   // Redirect if already logged in
   useEffect(() => {
     if (user) {
-      navigate('/dashboard');
+      navigate("/dashboard");
     }
   }, [user, navigate]);
 
@@ -30,17 +36,17 @@ export default function Login() {
     setIsLoading(true);
 
     // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    await new Promise((resolve) => setTimeout(resolve, 1000));
 
     // Use context login function
     login(formData);
 
     setIsLoading(false);
-    navigate('/dashboard');
+    navigate("/dashboard");
   };
 
   const handleInputChange = (field: string, value: string) => {
-    setFormData(prev => ({ ...prev, [field]: value }));
+    setFormData((prev) => ({ ...prev, [field]: value }));
   };
 
   return (
@@ -53,7 +59,9 @@ export default function Login() {
               <Code2 className="w-6 h-6 text-white" />
             </div>
           </div>
-          <h2 className="mt-4 text-3xl font-bold text-blue-600">StudentDev Hub</h2>
+          <h2 className="mt-4 text-3xl font-bold text-blue-600">
+            StudentDev Hub
+          </h2>
           <p className="mt-2 text-gray-600">Join the developer community</p>
         </div>
 
@@ -75,7 +83,9 @@ export default function Login() {
                     type="text"
                     placeholder="John"
                     value={formData.firstName}
-                    onChange={(e) => handleInputChange("firstName", e.target.value)}
+                    onChange={(e) =>
+                      handleInputChange("firstName", e.target.value)
+                    }
                     required
                     className="mt-1"
                   />
@@ -87,13 +97,15 @@ export default function Login() {
                     type="text"
                     placeholder="Doe"
                     value={formData.lastName}
-                    onChange={(e) => handleInputChange("lastName", e.target.value)}
+                    onChange={(e) =>
+                      handleInputChange("lastName", e.target.value)
+                    }
                     required
                     className="mt-1"
                   />
                 </div>
               </div>
-              
+
               <div>
                 <Label htmlFor="email">Email</Label>
                 <Input
@@ -106,7 +118,7 @@ export default function Login() {
                   className="mt-1"
                 />
               </div>
-              
+
               <div>
                 <Label htmlFor="university">University</Label>
                 <Input
@@ -114,17 +126,15 @@ export default function Login() {
                   type="text"
                   placeholder="University of Technology"
                   value={formData.university}
-                  onChange={(e) => handleInputChange("university", e.target.value)}
+                  onChange={(e) =>
+                    handleInputChange("university", e.target.value)
+                  }
                   required
                   className="mt-1"
                 />
               </div>
 
-              <Button 
-                type="submit" 
-                className="w-full"
-                disabled={isLoading}
-              >
+              <Button type="submit" className="w-full" disabled={isLoading}>
                 {isLoading ? "Creating Account..." : "Get Started"}
               </Button>
             </form>

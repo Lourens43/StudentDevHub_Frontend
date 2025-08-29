@@ -1,12 +1,12 @@
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import {
-  Code2,
-  ArrowRight,
-  Coffee,
-  Laptop,
-  Shield
-} from "lucide-react";
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Code2, ArrowRight, Coffee, Laptop, Shield } from "lucide-react";
 import { Link } from "react-router-dom";
 
 export default function Index() {
@@ -30,9 +30,7 @@ export default function Index() {
               </Link>
             </Button>
             <Button size="lg" variant="outline" className="px-8 py-3" asChild>
-              <Link to="/tracks">
-                Browse Tracks
-              </Link>
+              <Link to="/tracks">Browse Tracks</Link>
             </Button>
           </div>
         </div>
@@ -41,7 +39,9 @@ export default function Index() {
       {/* Learning Tracks */}
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">Choose Your Track</h2>
+          <h2 className="text-3xl font-bold text-center mb-12">
+            Choose Your Track
+          </h2>
 
           <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             <Card className="hover:shadow-md transition-shadow">
@@ -50,7 +50,9 @@ export default function Index() {
                   <Coffee className="w-6 h-6 text-orange-600" />
                 </div>
                 <CardTitle>Java</CardTitle>
-                <CardDescription>Backend development with Spring Boot</CardDescription>
+                <CardDescription>
+                  Backend development with Spring Boot
+                </CardDescription>
               </CardHeader>
               <CardContent>
                 <Button className="w-full" asChild>

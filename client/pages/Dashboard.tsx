@@ -2,11 +2,7 @@ import { Layout } from "@/components/Layout";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
-import {
-  Coffee,
-  Laptop,
-  Shield
-} from "lucide-react";
+import { Coffee, Laptop, Shield } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useUser } from "@/contexts/UserContext";
 
@@ -22,7 +18,8 @@ export default function Dashboard() {
           </h1>
           {user && (
             <p className="text-gray-600 mt-2">
-              Student at {user.university} • Joined {new Date(user.joinedAt).toLocaleDateString()}
+              Student at {user.university} • Joined{" "}
+              {new Date(user.joinedAt).toLocaleDateString()}
             </p>
           )}
         </div>

@@ -1,5 +1,11 @@
 import { Layout } from "@/components/Layout";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { User, Mail, GraduationCap, Calendar } from "lucide-react";
@@ -14,10 +20,10 @@ export default function Profile() {
     return <Navigate to="/login" replace />;
   }
 
-  const joinedDate = new Date(user.joinedAt).toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric'
+  const joinedDate = new Date(user.joinedAt).toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
   });
 
   return (
@@ -50,7 +56,7 @@ export default function Profile() {
                     <div className="font-medium">{user.email}</div>
                   </div>
                 </div>
-                
+
                 <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
                   <GraduationCap className="w-5 h-5 text-gray-600" />
                   <div>
@@ -58,7 +64,7 @@ export default function Profile() {
                     <div className="font-medium">{user.university}</div>
                   </div>
                 </div>
-                
+
                 <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg md:col-span-2">
                   <Calendar className="w-5 h-5 text-gray-600" />
                   <div>

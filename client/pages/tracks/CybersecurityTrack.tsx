@@ -3,36 +3,70 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
-import { 
-  Shield,
-  CheckCircle,
-  Circle,
-  PlayCircle
-} from "lucide-react";
+import { Shield, CheckCircle, Circle, PlayCircle } from "lucide-react";
 
 export default function CybersecurityTrack() {
   const modules = [
-    { id: 1, title: "Security Fundamentals", level: "Beginner", completed: false },
+    {
+      id: 1,
+      title: "Security Fundamentals",
+      level: "Beginner",
+      completed: false,
+    },
     { id: 2, title: "Network Security", level: "Beginner", completed: false },
-    { id: 3, title: "Operating System Security", level: "Beginner", completed: false },
-    { id: 4, title: "Cryptography Basics", level: "Beginner", completed: false },
-    { id: 5, title: "Ethical Hacking Principles", level: "Intermediate", completed: false },
-    { id: 6, title: "Penetration Testing", level: "Intermediate", completed: false },
-    { id: 7, title: "Vulnerability Assessment", level: "Intermediate", completed: false },
-    { id: 8, title: "Web Application Security", level: "Intermediate", completed: false },
+    {
+      id: 3,
+      title: "Operating System Security",
+      level: "Beginner",
+      completed: false,
+    },
+    {
+      id: 4,
+      title: "Cryptography Basics",
+      level: "Beginner",
+      completed: false,
+    },
+    {
+      id: 5,
+      title: "Ethical Hacking Principles",
+      level: "Intermediate",
+      completed: false,
+    },
+    {
+      id: 6,
+      title: "Penetration Testing",
+      level: "Intermediate",
+      completed: false,
+    },
+    {
+      id: 7,
+      title: "Vulnerability Assessment",
+      level: "Intermediate",
+      completed: false,
+    },
+    {
+      id: 8,
+      title: "Web Application Security",
+      level: "Intermediate",
+      completed: false,
+    },
     { id: 9, title: "Malware Analysis", level: "Advanced", completed: false },
-    { id: 10, title: "Digital Forensics", level: "Advanced", completed: false }
+    { id: 10, title: "Digital Forensics", level: "Advanced", completed: false },
   ];
 
-  const completedModules = modules.filter(m => m.completed).length;
+  const completedModules = modules.filter((m) => m.completed).length;
   const progressPercentage = (completedModules / modules.length) * 100;
 
   const getLevelColor = (level: string) => {
     switch (level) {
-      case "Beginner": return "bg-green-100 text-green-800";
-      case "Intermediate": return "bg-yellow-100 text-yellow-800";
-      case "Advanced": return "bg-red-100 text-red-800";
-      default: return "bg-gray-100 text-gray-800";
+      case "Beginner":
+        return "bg-green-100 text-green-800";
+      case "Intermediate":
+        return "bg-yellow-100 text-yellow-800";
+      case "Advanced":
+        return "bg-red-100 text-red-800";
+      default:
+        return "bg-gray-100 text-gray-800";
     }
   };
 
@@ -55,7 +89,9 @@ export default function CybersecurityTrack() {
           <CardContent className="p-6">
             <div className="flex justify-between items-center mb-2">
               <span className="font-medium">Your Progress</span>
-              <span className="text-sm text-gray-600">{completedModules}/{modules.length} modules</span>
+              <span className="text-sm text-gray-600">
+                {completedModules}/{modules.length} modules
+              </span>
             </div>
             <Progress value={progressPercentage} className="h-2" />
           </CardContent>

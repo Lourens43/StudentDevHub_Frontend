@@ -1,5 +1,11 @@
 import { Layout } from "./Layout";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Construction, ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -20,12 +26,14 @@ export function Placeholder({ title, description }: PlaceholderProps) {
             </div>
             <CardTitle className="text-2xl">{title}</CardTitle>
             <CardDescription>
-              {description || "This page is under construction. Please check back later!"}
+              {description ||
+                "This page is under construction. Please check back later!"}
             </CardDescription>
           </CardHeader>
           <CardContent>
             <p className="text-gray-600 mb-6">
-              Want to help build this feature? Continue learning and let us know what you'd like to see here.
+              Want to help build this feature? Continue learning and let us know
+              what you'd like to see here.
             </p>
             <div className="space-y-3">
               <Button className="w-full" asChild>

@@ -1,13 +1,14 @@
 import { Layout } from "@/components/Layout";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import {
-  Calendar,
-  ExternalLink,
-  Award,
-  Github
-} from "lucide-react";
+import { Calendar, ExternalLink, Award, Github } from "lucide-react";
 
 export default function Activities() {
   const mockEvents = [
@@ -16,39 +17,47 @@ export default function Activities() {
       title: "StudentDev Hackathon 2024",
       description: "48-hour hackathon for student developers",
       date: "March 15-17, 2024",
-      type: "Hackathon"
+      type: "Hackathon",
     },
     {
       id: 2,
       title: "AWS Certified Developer",
       description: "Professional certification for cloud development",
       date: "Available year-round",
-      type: "Certification"
+      type: "Certification",
     },
     {
       id: 3,
       title: "StudentDev Community",
       description: "Open source projects and collaboration",
       date: "Join anytime",
-      type: "Community"
-    }
+      type: "Community",
+    },
   ];
 
   const getTypeIcon = (type: string) => {
     switch (type) {
-      case "Hackathon": return <Calendar className="w-4 h-4 text-blue-600" />;
-      case "Certification": return <Award className="w-4 h-4 text-green-600" />;
-      case "Community": return <Github className="w-4 h-4 text-purple-600" />;
-      default: return null;
+      case "Hackathon":
+        return <Calendar className="w-4 h-4 text-blue-600" />;
+      case "Certification":
+        return <Award className="w-4 h-4 text-green-600" />;
+      case "Community":
+        return <Github className="w-4 h-4 text-purple-600" />;
+      default:
+        return null;
     }
   };
 
   const getTypeColor = (type: string) => {
     switch (type) {
-      case "Hackathon": return "bg-blue-100 text-blue-800";
-      case "Certification": return "bg-green-100 text-green-800";
-      case "Community": return "bg-purple-100 text-purple-800";
-      default: return "bg-gray-100 text-gray-800";
+      case "Hackathon":
+        return "bg-blue-100 text-blue-800";
+      case "Certification":
+        return "bg-green-100 text-green-800";
+      case "Community":
+        return "bg-purple-100 text-purple-800";
+      default:
+        return "bg-gray-100 text-gray-800";
     }
   };
 

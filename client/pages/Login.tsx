@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Code2 } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
+import { useUser } from "@/contexts/UserContext";
 
 export default function Login() {
   const [formData, setFormData] = useState({
@@ -14,22 +15,26 @@ export default function Login() {
     email: ""
   });
   const [isLoading, setIsLoading] = useState(false);
+  const { user, login } = useUser();
   const navigate = useNavigate();
+
+  // Redirect if already logged in
+  useEffect(() => {
+    if (user) {
+      navigate('/dashboard');
+    }
+  }, [user, navigate]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
-    
+
     // Simulate API call
     await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    // Store user data in localStorage for demo
-    localStorage.setItem('studentdev_user', JSON.stringify({
-      ...formData,
-      id: Date.now(),
-      joinedAt: new Date().toISOString()
-    }));
-    
+
+    // Use context login function
+    login(formData);
+
     setIsLoading(false);
     navigate('/dashboard');
   };

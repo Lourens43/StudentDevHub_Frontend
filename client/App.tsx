@@ -7,9 +7,11 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Placeholder } from "@/components/Placeholder";
+import { UserProvider } from "@/contexts/UserContext";
 
 // Page imports
 import Index from "./pages/Index";
+import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import Tracks from "./pages/Tracks";
 import Resources from "./pages/Resources";
@@ -27,32 +29,35 @@ const queryClient = new QueryClient();
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <Routes>
-          {/* Main Pages */}
-          <Route path="/" element={<Index />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/tracks" element={<Tracks />} />
-          <Route path="/resources" element={<Resources />} />
-          <Route path="/projects" element={<Projects />} />
-          <Route path="/activities" element={<Activities />} />
+      <UserProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <Routes>
+            {/* Main Pages */}
+            <Route path="/" element={<Index />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/tracks" element={<Tracks />} />
+            <Route path="/resources" element={<Resources />} />
+            <Route path="/projects" element={<Projects />} />
+            <Route path="/activities" element={<Activities />} />
 
-          {/* Learning Track Pages */}
-          <Route path="/tracks/java" element={<JavaTrack />} />
-          <Route path="/tracks/frontend" element={<FrontendTrack />} />
-          <Route path="/tracks/cybersecurity" element={<CybersecurityTrack />} />
+            {/* Learning Track Pages */}
+            <Route path="/tracks/java" element={<JavaTrack />} />
+            <Route path="/tracks/frontend" element={<FrontendTrack />} />
+            <Route path="/tracks/cybersecurity" element={<CybersecurityTrack />} />
 
-          {/* Placeholder routes for future features */}
-          <Route path="/tips" element={<Placeholder title="Documentation Tips" description="Learn how to read and interpret technical documentation effectively." />} />
-          <Route path="/profile" element={<Placeholder title="User Profile" description="Manage your learning profile and preferences." />} />
-          <Route path="/settings" element={<Placeholder title="Settings" description="Customize your StudentDev Hub experience." />} />
+            {/* Placeholder routes for future features */}
+            <Route path="/tips" element={<Placeholder title="Documentation Tips" description="Learn how to read and interpret technical documentation effectively." />} />
+            <Route path="/profile" element={<Placeholder title="User Profile" description="Manage your learning profile and preferences." />} />
+            <Route path="/settings" element={<Placeholder title="Settings" description="Customize your StudentDev Hub experience." />} />
 
-          {/* Catch-all route */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
+            {/* Catch-all route */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </BrowserRouter>
+      </UserProvider>
     </TooltipProvider>
   </QueryClientProvider>
 );

@@ -20,9 +20,9 @@ export default function Index() {
         <div className="absolute -top-28 right-1/2 h-64 w-64 rounded-full bg-indigo-200/40 blur-3xl" />
         <div className="absolute -bottom-28 left-1/2 h-64 w-64 rounded-full bg-blue-200/40 blur-3xl" />
 
-        <div className="container mx-auto px-4 py-24 text-center max-w-5xl">
+        <div className="container mx-auto px-4 py-28 text-center max-w-7xl">
 
-          <h1 className="mt-2 text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-extrabold tracking-tight">
+          <h1 className="mt-0 text-[14vw] sm:text-[12vw] md:text-[9rem] lg:text-[11rem] xl:text-[13rem] font-extrabold tracking-tight leading-none">
             <span className="text-blue-600">StudentDev</span> Hub
           </h1>
 

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Layout } from "@/components/Layout";
 import {
   Card,
@@ -18,7 +18,7 @@ import {
   DialogTitle,
   DialogDescription,
 } from "@/components/ui/dialog";
-import { Search, ExternalLink, Coffee, Laptop, Shield } from "lucide-react";
+import { Search, ExternalLink, Coffee, Laptop, Shield, Maximize2 } from "lucide-react";
 
 export default function Resources() {
   const [playerOpen, setPlayerOpen] = useState(false);

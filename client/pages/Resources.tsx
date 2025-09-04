@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Layout } from "@/components/Layout";
 import {
   Card,
@@ -9,9 +10,29 @@ import {
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
+import { AspectRatio } from "@/components/ui/aspect-ratio";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+} from "@/components/ui/dialog";
 import { Search, ExternalLink, Coffee, Laptop, Shield } from "lucide-react";
 
 export default function Resources() {
+  const [playerOpen, setPlayerOpen] = useState(false);
+  const [currentVideo, setCurrentVideo] = useState<
+    | {
+        id: number;
+        title: string;
+        provider: string;
+        track: string;
+        videoId: string;
+      }
+    | null
+  >(null);
+
   const mockResources = [
     {
       id: 1,
@@ -108,24 +129,61 @@ export default function Resources() {
     }
   };
 
+  const extractYouTubeId = (url: string) => {
+    try {
+      const u = new URL(url);
+      if (u.hostname === "youtu.be") {
+        return u.pathname.slice(1);
+      }
+      if (u.searchParams.get("v")) {
+        return u.searchParams.get("v") as string;
+      }
+      const paths = u.pathname.split("/").filter(Boolean);
+      const embedIndex = paths.findIndex((p) => p === "embed");
+      if (embedIndex !== -1 && paths[embedIndex + 1]) {
+        return paths[embedIndex + 1];
+      }
+      if (paths.length > 0) {
+        return paths[paths.length - 1];
+      }
+      return "";
+    } catch {
+      return "";
+    }
+  };
+
+  const openInPlayer = (resource: {
+    id: number;
+    title: string;
+    provider: string;
+    track: string;
+    url: string;
+  }) => {
+    const videoId = extractYouTubeId(resource.url);
+    if (!videoId) return;
+    setCurrentVideo({
+      id: resource.id,
+      title: resource.title,
+      provider: resource.provider,
+      track: resource.track,
+      videoId,
+    });
+    setPlayerOpen(true);
+  };
+
   return (
     <Layout>
       <div className="container mx-auto px-4 py-8">
         <h1 className="text-3xl font-bold mb-8">Resources</h1>
 
-        {/* Search */}
         <div className="relative mb-8 max-w-md">
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
           <Input placeholder="Search resources..." className="pl-10" />
         </div>
 
-        {/* Resources Grid */}
         <div className="grid md:grid-cols-2 gap-6">
           {mockResources.map((resource) => (
-            <Card
-              key={resource.id}
-              className="hover:shadow-md transition-shadow"
-            >
+            <Card key={resource.id} className="hover:shadow-md transition-shadow">
               <CardHeader>
                 <div className="flex items-center gap-2 mb-2">
                   {getTrackIcon(resource.track)}
@@ -138,17 +196,9 @@ export default function Resources() {
 
               <CardContent>
                 <div className="flex items-center justify-between">
-                  <span className="text-sm text-gray-600">
-                    by {resource.provider}
-                  </span>
-                  <Button size="sm" variant="outline" asChild>
-                    <a
-                      href={resource.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      View <ExternalLink className="w-3 h-3 ml-1" />
-                    </a>
+                  <span className="text-sm text-gray-600">by {resource.provider}</span>
+                  <Button size="sm" variant="outline" onClick={() => openInPlayer(resource)}>
+                    View <ExternalLink className="w-3 h-3 ml-1" />
                   </Button>
                 </div>
               </CardContent>
@@ -156,6 +206,31 @@ export default function Resources() {
           ))}
         </div>
       </div>
+
+      <Dialog open={playerOpen} onOpenChange={setPlayerOpen}>
+        <DialogContent className="sm:max-w-3xl">
+          <DialogHeader>
+            <DialogTitle>{currentVideo?.title}</DialogTitle>
+            {currentVideo && (
+              <DialogDescription>
+                {currentVideo.track} • {currentVideo.provider}
+              </DialogDescription>
+            )}
+          </DialogHeader>
+          {currentVideo && (
+            <AspectRatio ratio={16 / 9}>
+              <iframe
+                src={`https://www.youtube.com/embed/${currentVideo.videoId}?autoplay=1&rel=0`}
+                title={currentVideo.title}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+                className="h-full w-full rounded-md border"
+              />
+            </AspectRatio>
+          )}
+        </DialogContent>
+      </Dialog>
     </Layout>
   );
 }

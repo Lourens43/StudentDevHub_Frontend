@@ -11,28 +11,25 @@ import { Link } from "react-router-dom";
 
 export default function Index() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-gray-50">
+    <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="relative py-24 overflow-hidden">
-        {/* decorative background */}
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(59,130,246,0.18),_rgba(255,255,255,0)_65%)]" />
-        <div className="pointer-events-none absolute -top-24 left-1/2 -translate-x-1/2 h-72 w-72 rounded-full bg-blue-500/10 blur-3xl" />
-        <div className="container mx-auto px-4 text-center max-w-4xl relative">
-          <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight mb-6">
+      <section className="py-16">
+        <div className="container mx-auto px-4 text-center max-w-4xl">
+          <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight mb-4">
             <span className="text-blue-600">StudentDev</span> Hub
           </h1>
 
-          <p className="text-lg md:text-xl text-gray-600 mb-10 max-w-2xl mx-auto">
+          <p className="text-lg md:text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
             Learn programming through structured roadmaps and practical projects
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
-            <Button size="lg" className="px-8 py-3 shadow-lg hover:shadow-xl" asChild>
+          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+            <Button size="lg" className="px-8 py-3" asChild>
               <Link to="/login">
                 Get Started <ArrowRight className="ml-2 w-5 h-5" />
               </Link>
             </Button>
-            <Button size="lg" variant="outline" className="px-8 py-3 shadow-lg hover:shadow-xl" asChild>
+            <Button size="lg" variant="outline" className="px-8 py-3" asChild>
               <Link to="/tracks">Browse Tracks</Link>
             </Button>
           </div>

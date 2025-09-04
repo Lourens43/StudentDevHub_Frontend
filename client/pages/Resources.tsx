@@ -16,6 +16,90 @@ import { Collapsible, CollapsibleTrigger, CollapsibleContent } from "@/component
 import { useUser } from "@/contexts/UserContext";
 import { Search, Coffee, Laptop, Shield, ChevronDown, ExternalLink } from "lucide-react";
 
+type ChatMessage = {
+  id: string;
+  text: string;
+  ts: number;
+  authorName: string;
+  authorEmail: string;
+};
+
+function ChatSection({ resourceId }: { resourceId: number }) {
+  const { user } = useUser();
+  const storageKey = useMemo(() => `resource_chat_${resourceId}`, [resourceId]);
+  const [messages, setMessages] = useState<ChatMessage[]>([]);
+  const [text, setText] = useState("");
+
+  useEffect(() => {
+    try {
+      const raw = localStorage.getItem(storageKey);
+      if (raw) setMessages(JSON.parse(raw));
+    } catch {
+      setMessages([]);
+    }
+  }, [storageKey]);
+
+  useEffect(() => {
+    try {
+      localStorage.setItem(storageKey, JSON.stringify(messages));
+    } catch {}
+  }, [messages, storageKey]);
+
+  const send = () => {
+    const trimmed = text.trim();
+    if (!trimmed) return;
+    const msg: ChatMessage = {
+      id: `${Date.now()}_${Math.random().toString(36).slice(2)}`,
+      text: trimmed,
+      ts: Date.now(),
+      authorName: user ? `${user.firstName} ${user.lastName}` : "Guest",
+      authorEmail: user ? user.email : "",
+    };
+    setMessages((prev) => [...prev, msg]);
+    setText("");
+  };
+
+  return (
+    <div className="mt-4 border-t pt-4 space-y-3">
+      <div className="font-medium">Community Q&A</div>
+      <div className="max-h-64 overflow-y-auto space-y-3 pr-1">
+        {messages.length === 0 ? (
+          <div className="text-sm text-muted-foreground">No messages yet. Be the first to ask a question.</div>
+        ) : (
+          messages.map((m) => (
+            <div key={m.id} className="rounded-md border p-2">
+              <div className="flex items-center justify-between text-xs text-muted-foreground">
+                <span className="truncate">
+                  {m.authorName}
+                  {m.authorEmail ? ` • ${m.authorEmail}` : ""}
+                </span>
+                <span>{new Date(m.ts).toLocaleString()}</span>
+              </div>
+              <div className="mt-1 text-sm whitespace-pre-wrap break-words">{m.text}</div>
+            </div>
+          ))
+        )}
+      </div>
+      <div className="flex items-start gap-2">
+        <Textarea
+          placeholder={user ? "Ask a question or share a tip..." : "Sign in to post. You can still type here."}
+          value={text}
+          onChange={(e) => setText(e.target.value)}
+          className="min-h-10"
+          rows={2}
+          maxLength={1000}
+        />
+        <Button onClick={send} disabled={!text.trim()} className="shrink-0">
+          Send
+        </Button>
+      </div>
+      {!user && (
+        <div className="text-xs text-muted-foreground">Posts are saved only on your device. Sign in for attribution.</div>
+      )}
+    </div>
+  );
+}
+
 export default function Resources() {
 
   const mockResources = [

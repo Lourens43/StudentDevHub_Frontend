@@ -13,17 +13,19 @@ export default function Index() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="py-20">
-        <div className="container mx-auto px-4 text-center max-w-4xl">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6">
+      <section className="relative py-20 overflow-hidden">
+        {/* subtle radial gradient background */}
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(59,130,246,0.12),_rgba(255,255,255,0)_60%)]" />
+        <div className="container mx-auto px-4 text-center max-w-4xl relative">
+          <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight mb-6">
             <span className="text-blue-600">StudentDev</span> Hub
           </h1>
 
-          <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+          <p className="text-lg md:text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
             Learn programming through structured roadmaps and practical projects
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
             <Button size="lg" className="px-8 py-3" asChild>
               <Link to="/login">
                 Get Started <ArrowRight className="ml-2 w-5 h-5" />

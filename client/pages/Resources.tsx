@@ -1,4 +1,3 @@
-import { useRef, useState } from "react";
 import { Layout } from "@/components/Layout";
 import {
   Card,
@@ -11,28 +10,10 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogDescription,
-} from "@/components/ui/dialog";
-import { Search, ExternalLink, Coffee, Laptop, Shield, Maximize2 } from "lucide-react";
+import { Collapsible, CollapsibleTrigger, CollapsibleContent } from "@/components/ui/collapsible";
+import { Search, Play, Coffee, Laptop, Shield, ChevronDown } from "lucide-react";
 
 export default function Resources() {
-  const [playerOpen, setPlayerOpen] = useState(false);
-  const playerContainerRef = useRef<HTMLDivElement | null>(null);
-  const [currentVideo, setCurrentVideo] = useState<
-    | {
-        id: number;
-        title: string;
-        provider: string;
-        track: string;
-        videoId: string;
-      }
-    | null
-  >(null);
 
   const mockResources = [
     {
@@ -153,24 +134,6 @@ export default function Resources() {
     }
   };
 
-  const openInPlayer = (resource: {
-    id: number;
-    title: string;
-    provider: string;
-    track: string;
-    url: string;
-  }) => {
-    const videoId = extractYouTubeId(resource.url);
-    if (!videoId) return;
-    setCurrentVideo({
-      id: resource.id,
-      title: resource.title,
-      provider: resource.provider,
-      track: resource.track,
-      videoId,
-    });
-    setPlayerOpen(true);
-  };
 
   return (
     <Layout>
@@ -196,64 +159,35 @@ export default function Resources() {
               </CardHeader>
 
               <CardContent>
-                <div className="flex items-center justify-between">
-                  <span className="text-sm text-gray-600">by {resource.provider}</span>
-                  <Button size="sm" variant="outline" onClick={() => openInPlayer(resource)}>
-                    View <ExternalLink className="w-3 h-3 ml-1" />
-                  </Button>
-                </div>
+                <Collapsible>
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm text-gray-600">by {resource.provider}</span>
+                    <CollapsibleTrigger asChild>
+                      <Button size="sm" variant="outline">
+                        Watch <ChevronDown className="w-3 h-3 ml-1" />
+                      </Button>
+                    </CollapsibleTrigger>
+                  </div>
+                  <CollapsibleContent className="mt-4">
+                    <AspectRatio ratio={16 / 9}>
+                      <iframe
+                        src={`https://www.youtube.com/embed/${extractYouTubeId(resource.url)}?rel=0`}
+                        title={resource.title}
+                        loading="lazy"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen; web-share"
+                        referrerPolicy="strict-origin-when-cross-origin"
+                        allowFullScreen
+                        className="h-full w-full rounded-md border"
+                      />
+                    </AspectRatio>
+                  </CollapsibleContent>
+                </Collapsible>
               </CardContent>
             </Card>
           ))}
         </div>
       </div>
 
-      <Dialog open={playerOpen} onOpenChange={setPlayerOpen}>
-        <DialogContent className="sm:max-w-5xl">
-          <DialogHeader>
-            <div className="flex items-center justify-between gap-4">
-              <div className="min-w-0">
-                <DialogTitle className="truncate">{currentVideo?.title}</DialogTitle>
-                {currentVideo && (
-                  <DialogDescription className="truncate">
-                    {currentVideo.track} • {currentVideo.provider}
-                  </DialogDescription>
-                )}
-              </div>
-              <Button
-                size="sm"
-                variant="outline"
-                onClick={() => {
-                  const el = playerContainerRef.current;
-                  if (!el) return;
-                  if (document.fullscreenElement) {
-                    document.exitFullscreen().catch(() => {});
-                  } else if (el.requestFullscreen) {
-                    el.requestFullscreen().catch(() => {});
-                  }
-                }}
-                title="Fullscreen"
-              >
-                <Maximize2 className="h-4 w-4" />
-              </Button>
-            </div>
-          </DialogHeader>
-          {currentVideo && (
-            <div ref={playerContainerRef} className="w-full">
-              <AspectRatio ratio={16 / 9}>
-                <iframe
-                  src={`https://www.youtube.com/embed/${currentVideo.videoId}?autoplay=1&rel=0`}
-                  title={currentVideo.title}
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen; web-share"
-                  referrerPolicy="strict-origin-when-cross-origin"
-                  allowFullScreen
-                  className="h-full w-full rounded-md border"
-                />
-              </AspectRatio>
-            </div>
-          )}
-        </DialogContent>
-      </Dialog>
     </Layout>
   );
 }

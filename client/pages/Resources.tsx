@@ -10,8 +10,10 @@ import {
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Collapsible, CollapsibleTrigger, CollapsibleContent } from "@/components/ui/collapsible";
+import { useUser } from "@/contexts/UserContext";
 import { Search, Coffee, Laptop, Shield, ChevronDown, ExternalLink } from "lucide-react";
 
 export default function Resources() {

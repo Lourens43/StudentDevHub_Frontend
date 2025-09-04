@@ -20,10 +20,10 @@ export default function Index() {
         <div className="absolute -top-28 right-1/2 h-64 w-64 rounded-full bg-indigo-200/40 blur-3xl" />
         <div className="absolute -bottom-28 left-1/2 h-64 w-64 rounded-full bg-blue-200/40 blur-3xl" />
 
-        <div className="container mx-auto px-4 py-28 text-center max-w-7xl">
+        <div className="container mx-auto px-4 py-48 lg:py-56 text-center max-w-7xl">
 
-          <h1 className="mt-0 text-[14vw] sm:text-[12vw] md:text-[9rem] lg:text-[11rem] xl:text-[13rem] font-extrabold tracking-tight leading-none">
-            <span className="text-blue-600">StudentDev</span> Hub
+          <h1 className="mt-0 text-[20vw] sm:text-[16vw] md:text-[12rem] lg:text-[14rem] xl:text-[16rem] 2xl:text-[18rem] font-extrabold tracking-tight leading-none">
+            <span className="text-blue-700">StudentDev</span> Hub
           </h1>
 
           <p className="mt-4 text-lg md:text-xl text-gray-600 max-w-2xl mx-auto">

@@ -15,7 +15,7 @@ export default function Index() {
       {/* Hero Section */}
       <section className="py-16">
         <div className="container mx-auto px-4 text-center max-w-4xl">
-          <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight mb-4">
+          <h1 className="text-6xl md:text-7xl lg:text-8xl font-extrabold tracking-tight mb-4">
             <span className="text-blue-600">StudentDev</span> Hub
           </h1>
 
@@ -43,7 +43,7 @@ export default function Index() {
             Choose Your Track
           </h2>
 
-          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          <div className="grid grid-cols-3 gap-8 max-w-5xl mx-auto">
             <Card className="transition-all duration-200 hover:-translate-y-1 hover:shadow-xl border-blue-100/60">
               <CardHeader className="text-center">
                 <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mx-auto mb-4 ring-1 ring-orange-200">

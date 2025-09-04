@@ -6,24 +6,24 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Placeholder } from "@/components/Placeholder";
-import { UserProvider } from "@/contexts/UserContext";
+import { Placeholder } from "@/components/Placeholder.jsx";
+import { UserProvider } from "@/contexts/UserContext.jsx";
 
 // Page imports
-import Index from "./pages/Index";
-import Login from "./pages/Login";
-import Profile from "./pages/Profile";
-import Dashboard from "./pages/Dashboard";
-import Tracks from "./pages/Tracks";
-import Resources from "./pages/Resources";
-import Projects from "./pages/Projects";
-import Activities from "./pages/Activities";
-import NotFound from "./pages/NotFound";
+import Index from "./pages/Index.jsx";
+import Login from "./pages/Login.jsx";
+import Profile from "./pages/Profile.jsx";
+import Dashboard from "./pages/Dashboard.jsx";
+import Tracks from "./pages/Tracks.jsx";
+import Resources from "./pages/Resources.jsx";
+import Projects from "./pages/Projects.jsx";
+import Activities from "./pages/Activities.jsx";
+import NotFound from "./pages/NotFound.jsx";
 
 // Track page imports
-import JavaTrack from "./pages/tracks/JavaTrack";
-import FrontendTrack from "./pages/tracks/FrontendTrack";
-import CybersecurityTrack from "./pages/tracks/CybersecurityTrack";
+import JavaTrack from "./pages/tracks/JavaTrack.jsx";
+import FrontendTrack from "./pages/tracks/FrontendTrack.jsx";
+import CybersecurityTrack from "./pages/tracks/CybersecurityTrack.jsx";
 
 const queryClient = new QueryClient();
 

@@ -7,7 +7,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { ArrowRight, Coffee, Laptop, Shield, Sparkles } from "lucide-react";
+import { ArrowRight, Coffee, Laptop, Shield } from "lucide-react";
 import { Link } from "react-router-dom";
 
 export default function Index() {
@@ -21,20 +21,13 @@ export default function Index() {
         <div className="absolute -bottom-24 left-1/2 h-72 w-72 rounded-full bg-blue-200/40 blur-3xl" />
 
         <div className="container mx-auto px-4 py-20 text-center max-w-5xl">
-          <div className="inline-flex items-center gap-2 rounded-full border bg-white/70 px-3 py-1 text-sm text-gray-600 backdrop-blur-sm">
-            <Sparkles className="h-4 w-4 text-blue-600" />
-            Learn by doing with curated tracks
-          </div>
 
           <h1 className="mt-6 text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight">
-            Master coding with
-            <span className="mx-2 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent">
-              StudentDev Hub
-            </span>
+            <span className="text-blue-600">StudentDev</span> Hub
           </h1>
 
           <p className="mt-4 text-lg md:text-xl text-gray-600 max-w-2xl mx-auto">
-            Follow structured roadmaps, build real projects, and grow your skills step by step.
+            Learn programming through structured roadmaps and practical projects
           </p>
 
           <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
@@ -48,7 +41,6 @@ export default function Index() {
             </Button>
           </div>
 
-          <p className="mt-6 text-sm text-gray-500">No fluff. Just practical learning and projects.</p>
         </div>
       </section>
 

@@ -11,7 +11,7 @@ import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Collapsible, CollapsibleTrigger, CollapsibleContent } from "@/components/ui/collapsible";
-import { Search, Coffee, Laptop, Shield, ChevronDown } from "lucide-react";
+import { Search, Coffee, Laptop, Shield, ChevronDown, ExternalLink } from "lucide-react";
 
 export default function Resources() {
 
@@ -180,6 +180,13 @@ export default function Resources() {
                         className="h-full w-full rounded-md border"
                       />
                     </AspectRatio>
+                    <div className="mt-2 flex justify-end">
+                      <Button variant="link" size="sm" asChild>
+                        <a href={resource.url} target="_blank" rel="noopener noreferrer">
+                          Open on YouTube for fullscreen <ExternalLink className="w-3 h-3 ml-1" />
+                        </a>
+                      </Button>
+                    </div>
                   </CollapsibleContent>
                 </Collapsible>
               </CardContent>

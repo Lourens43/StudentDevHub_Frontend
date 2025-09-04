@@ -22,7 +22,7 @@ export default function Index() {
 
         <div className="container mx-auto px-4 py-24 text-center max-w-5xl">
 
-          <h1 className="mt-2 text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight">
+          <h1 className="mt-2 text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-extrabold tracking-tight">
             <span className="text-blue-600">StudentDev</span> Hub
           </h1>
 

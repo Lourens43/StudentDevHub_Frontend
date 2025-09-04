@@ -36,7 +36,7 @@ export default function Index() {
                 Get Started <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </Button>
-            <Button size="lg" variant="outline" className="px-8" asChild>
+            <Button size="lg" variant="ghost" className="px-8 text-gray-700 hover:text-gray-900" asChild>
               <Link to="/tracks">Browse Tracks</Link>
             </Button>
           </div>

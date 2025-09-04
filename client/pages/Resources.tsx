@@ -11,7 +11,7 @@ import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Collapsible, CollapsibleTrigger, CollapsibleContent } from "@/components/ui/collapsible";
-import { Search, Play, Coffee, Laptop, Shield, ChevronDown } from "lucide-react";
+import { Search, Coffee, Laptop, Shield, ChevronDown } from "lucide-react";
 
 export default function Resources() {
 

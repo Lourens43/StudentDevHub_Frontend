@@ -22,6 +22,7 @@ import { Search, ExternalLink, Coffee, Laptop, Shield, Maximize2 } from "lucide-
 
 export default function Resources() {
   const [playerOpen, setPlayerOpen] = useState(false);
+  const playerContainerRef = useRef<HTMLDivElement | null>(null);
   const [currentVideo, setCurrentVideo] = useState<
     | {
         id: number;

@@ -274,6 +274,7 @@ export default function Resources() {
                         </a>
                       </Button>
                     </div>
+                    <ChatSection resourceId={resource.id} />
                   </CollapsibleContent>
                 </Collapsible>
               </CardContent>

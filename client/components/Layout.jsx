@@ -2,7 +2,7 @@ import { Navigation } from "./Navigation";
 
 export function Layout({ children }) {
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col">
+    <div className="min-h-screen bg-white flex flex-col">
       <Navigation />
       <main className="flex-1">{children}</main>
       <footer className="border-t bg-white/70 backdrop-blur">

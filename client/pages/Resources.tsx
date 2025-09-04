@@ -209,26 +209,48 @@ export default function Resources() {
       </div>
 
       <Dialog open={playerOpen} onOpenChange={setPlayerOpen}>
-        <DialogContent className="sm:max-w-3xl">
+        <DialogContent className="sm:max-w-5xl">
           <DialogHeader>
-            <DialogTitle>{currentVideo?.title}</DialogTitle>
-            {currentVideo && (
-              <DialogDescription>
-                {currentVideo.track} • {currentVideo.provider}
-              </DialogDescription>
-            )}
+            <div className="flex items-center justify-between gap-4">
+              <div className="min-w-0">
+                <DialogTitle className="truncate">{currentVideo?.title}</DialogTitle>
+                {currentVideo && (
+                  <DialogDescription className="truncate">
+                    {currentVideo.track} • {currentVideo.provider}
+                  </DialogDescription>
+                )}
+              </div>
+              <Button
+                size="sm"
+                variant="outline"
+                onClick={() => {
+                  const el = playerContainerRef.current;
+                  if (!el) return;
+                  if (document.fullscreenElement) {
+                    document.exitFullscreen().catch(() => {});
+                  } else if (el.requestFullscreen) {
+                    el.requestFullscreen().catch(() => {});
+                  }
+                }}
+                title="Fullscreen"
+              >
+                <Maximize2 className="h-4 w-4" />
+              </Button>
+            </div>
           </DialogHeader>
           {currentVideo && (
-            <AspectRatio ratio={16 / 9}>
-              <iframe
-                src={`https://www.youtube.com/embed/${currentVideo.videoId}?autoplay=1&rel=0`}
-                title={currentVideo.title}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerPolicy="strict-origin-when-cross-origin"
-                allowFullScreen
-                className="h-full w-full rounded-md border"
-              />
-            </AspectRatio>
+            <div ref={playerContainerRef} className="w-full">
+              <AspectRatio ratio={16 / 9}>
+                <iframe
+                  src={`https://www.youtube.com/embed/${currentVideo.videoId}?autoplay=1&rel=0`}
+                  title={currentVideo.title}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen; web-share"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  allowFullScreen
+                  className="h-full w-full rounded-md border"
+                />
+              </AspectRatio>
+            </div>
           )}
         </DialogContent>
       </Dialog>

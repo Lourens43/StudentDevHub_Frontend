@@ -63,11 +63,11 @@ export default function Projects() {
   const getDifficultyColor = (difficulty) => {
     switch (difficulty) {
       case "Beginner":
-        return "bg-green-100 text-green-800";
+        return "border-transparent bg-green-100 text-green-800";
       case "Intermediate":
-        return "bg-yellow-100 text-yellow-800";
+        return "border-transparent bg-yellow-100 text-yellow-800";
       case "Advanced":
-        return "bg-red-100 text-red-800";
+        return "border-transparent bg-red-100 text-red-800";
       default:
         return "bg-gray-100 text-gray-800";
     }

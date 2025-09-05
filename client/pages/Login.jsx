@@ -57,8 +57,8 @@ export default function Login() {
               <Code2 className="w-6 h-6 text-white" />
             </div>
           </div>
-          <h2 className="mt-4 text-3xl font-bold text-blue-600">
-            StudentDev Hub
+          <h2 className="mt-4 text-3xl font-bold">
+            <span className="text-blue-700">StudentDev</span> <span className="text-gray-900">Hub</span>
           </h2>
           <p className="mt-2 text-gray-600">Join the developer community</p>
         </div>

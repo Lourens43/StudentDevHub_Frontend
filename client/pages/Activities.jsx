@@ -8,6 +8,7 @@ import {
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { HighlightStudentDev } from "@/components/HighlightStudentDev";
 import { Calendar, ExternalLink, Award, Github } from "lucide-react";
 
 export default function Activities() {
@@ -77,8 +78,8 @@ export default function Activities() {
                   </Badge>
                 </div>
 
-                <CardTitle>{event.title}</CardTitle>
-                <CardDescription>{event.description}</CardDescription>
+                <CardTitle><HighlightStudentDev text={event.title} /></CardTitle>
+                <CardDescription><HighlightStudentDev text={event.description} /></CardDescription>
               </CardHeader>
 
               <CardContent>

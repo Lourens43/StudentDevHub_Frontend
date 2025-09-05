@@ -15,22 +15,21 @@ export default function Index() {
     <Layout>
       {/* Hero */}
       <section className="relative isolate overflow-hidden">
-        {/* Decorative background */}
-        <div className="absolute inset-0 -z-10 bg-gradient-to-b from-indigo-50 via-white to-blue-50"></div>
-        <div className="absolute -top-28 right-1/2 h-64 w-64 rounded-full bg-indigo-200/40 blur-3xl" />
-        <div className="absolute -bottom-28 left-1/2 h-64 w-64 rounded-full bg-blue-200/40 blur-3xl" />
+        {/* Background accents */}
+        <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-indigo-50 via-white to-blue-50" />
+        <div className="pointer-events-none absolute -top-24 right-1/3 h-72 w-72 rounded-full bg-indigo-200/40 blur-3xl" />
+        <div className="pointer-events-none absolute -bottom-24 left-1/3 h-72 w-72 rounded-full bg-blue-200/40 blur-3xl" />
 
-        <div className="container mx-auto px-4 min-h-screen py-0 text-center max-w-7xl flex flex-col items-center justify-center">
-
-          <h1 className="mt-0 text-[20vw] sm:text-[16vw] md:text-[12rem] lg:text-[14rem] xl:text-[16rem] 2xl:text-[18rem] font-extrabold tracking-tight leading-none">
-            <span className="block text-blue-700">StudentDev</span><span className="block">Hub</span>
+        <div className="container mx-auto max-w-6xl px-4 py-24 md:py-32 text-center">
+          <h1 className="mx-auto max-w-4xl text-5xl font-extrabold tracking-tight md:text-6xl">
+            <span className="bg-gradient-to-r from-blue-700 via-indigo-700 to-blue-700 bg-clip-text text-transparent">
+              StudentDev Hub
+            </span>
           </h1>
-
-          <p className="mt-4 text-lg md:text-xl text-gray-600 max-w-2xl mx-auto">
-            Learn programming through structured roadmaps and practical projects
+          <p className="mx-auto mt-4 max-w-2xl text-lg md:text-xl text-gray-600">
+            Learn programming through structured roadmaps and practical projects.
           </p>
-
-          <div className="mt-10 flex flex-col sm:flex-row gap-3 justify-center">
+          <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Button size="lg" className="px-8 shadow-lg hover:shadow-xl" asChild>
               <Link to="/login">
                 Get Started <ArrowRight className="ml-2 h-5 w-5" />
@@ -40,27 +39,27 @@ export default function Index() {
               <Link to="/tracks">Browse Tracks</Link>
             </Button>
           </div>
-
         </div>
       </section>
 
       {/* Learning Tracks */}
       <section className="py-20">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 tracking-tight">
+          <h2 className="text-center text-3xl font-bold tracking-tight md:text-4xl">
             Choose Your Track
           </h2>
+          <p className="mx-auto mt-2 max-w-2xl text-center text-gray-600">
+            Start with a path that matches your goals. Each track includes projects to build real skills.
+          </p>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-            <Card className="transition-all duration-200 hover:-translate-y-1 hover:shadow-xl border-blue-100/60 flex flex-col">
+          <div className="mx-auto mt-10 grid max-w-6xl grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <Card className="flex flex-col border-blue-100/60 transition-all duration-200 hover:-translate-y-1 hover:shadow-xl">
               <CardHeader className="text-center">
-                <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mx-auto mb-4 ring-1 ring-orange-200">
-                  <Coffee className="w-6 h-6 text-orange-600" />
+                <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-orange-100 ring-1 ring-orange-200">
+                  <Coffee className="h-6 w-6 text-orange-600" />
                 </div>
                 <CardTitle>Java</CardTitle>
-                <CardDescription>
-                  Backend development with Spring Boot
-                </CardDescription>
+                <CardDescription>Backend development with Spring Boot</CardDescription>
               </CardHeader>
               <CardContent className="mt-auto">
                 <Button className="w-full shadow-md hover:shadow-lg" asChild>
@@ -69,10 +68,10 @@ export default function Index() {
               </CardContent>
             </Card>
 
-            <Card className="transition-all duration-200 hover:-translate-y-1 hover:shadow-xl border-blue-100/60 flex flex-col">
+            <Card className="flex flex-col border-blue-100/60 transition-all duration-200 hover:-translate-y-1 hover:shadow-xl">
               <CardHeader className="text-center">
-                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mx-auto mb-4 ring-1 ring-blue-200">
-                  <Laptop className="w-6 h-6 text-blue-600" />
+                <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-blue-100 ring-1 ring-blue-200">
+                  <Laptop className="h-6 w-6 text-blue-600" />
                 </div>
                 <CardTitle>Frontend</CardTitle>
                 <CardDescription>Web development with React</CardDescription>
@@ -84,10 +83,10 @@ export default function Index() {
               </CardContent>
             </Card>
 
-            <Card className="transition-all duration-200 hover:-translate-y-1 hover:shadow-xl border-blue-100/60 flex flex-col">
+            <Card className="flex flex-col border-blue-100/60 transition-all duration-200 hover:-translate-y-1 hover:shadow-xl">
               <CardHeader className="text-center">
-                <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mx-auto mb-4 ring-1 ring-red-200">
-                  <Shield className="w-6 h-6 text-red-600" />
+                <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-red-100 ring-1 ring-red-200">
+                  <Shield className="h-6 w-6 text-red-600" />
                 </div>
                 <CardTitle>Cybersecurity</CardTitle>
                 <CardDescription>Ethical hacking and security</CardDescription>
@@ -98,6 +97,12 @@ export default function Index() {
                 </Button>
               </CardContent>
             </Card>
+          </div>
+
+          <div className="mt-10 text-center">
+            <Button variant="link" asChild>
+              <Link to="/tracks">Explore all tracks</Link>
+            </Button>
           </div>
         </div>
       </section>

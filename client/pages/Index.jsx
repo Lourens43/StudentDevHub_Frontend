@@ -21,7 +21,7 @@ export default function Index() {
         <div className="pointer-events-none absolute -bottom-24 left-1/3 h-72 w-72 rounded-full bg-blue-200/40 blur-3xl" />
 
         <div className="container mx-auto max-w-6xl px-4 py-24 md:py-32 text-center">
-          <h1 className="mx-auto max-w-none text-6xl font-extrabold leading-none tracking-tight md:text-8xl lg:text-9xl">
+          <h1 className="mx-auto max-w-none text-7xl font-extrabold leading-none tracking-tight sm:text-8xl md:text-9xl lg:text-[10rem] xl:text-[12rem]">
             <span className="text-blue-700">StudentDev</span> <span className="text-gray-900">Hub</span>
           </h1>
           <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">

@@ -21,14 +21,9 @@ export default function Index() {
         <div className="pointer-events-none absolute -bottom-24 left-1/3 h-72 w-72 rounded-full bg-blue-200/40 blur-3xl" />
 
         <div className="container mx-auto max-w-6xl px-4 py-24 md:py-32 text-center">
-          <h1 className="mx-auto max-w-4xl text-5xl font-extrabold tracking-tight md:text-6xl">
-            <span className="bg-gradient-to-r from-blue-700 via-indigo-700 to-blue-700 bg-clip-text text-transparent">
-              StudentDev Hub
-            </span>
+          <h1 className="mx-auto max-w-none text-6xl font-extrabold leading-none tracking-tight md:text-8xl lg:text-9xl">
+            <span className="text-blue-700">StudentDev</span> <span className="text-gray-900">Hub</span>
           </h1>
-          <p className="mx-auto mt-4 max-w-2xl text-lg md:text-xl text-gray-600">
-            Learn programming through structured roadmaps and practical projects.
-          </p>
           <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Button size="lg" className="px-8 shadow-lg hover:shadow-xl" asChild>
               <Link to="/login">
@@ -48,11 +43,8 @@ export default function Index() {
           <h2 className="text-center text-3xl font-bold tracking-tight md:text-4xl">
             Choose Your Track
           </h2>
-          <p className="mx-auto mt-2 max-w-2xl text-center text-gray-600">
-            Start with a path that matches your goals. Each track includes projects to build real skills.
-          </p>
 
-          <div className="mx-auto mt-10 grid max-w-6xl grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mx-auto mt-10 grid max-w-6xl grid-cols-3 gap-6">
             <Card className="flex flex-col border-blue-100/60 transition-all duration-200 hover:-translate-y-1 hover:shadow-xl">
               <CardHeader className="text-center">
                 <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-orange-100 ring-1 ring-orange-200">
@@ -97,12 +89,6 @@ export default function Index() {
                 </Button>
               </CardContent>
             </Card>
-          </div>
-
-          <div className="mt-10 text-center">
-            <Button variant="link" asChild>
-              <Link to="/tracks">Explore all tracks</Link>
-            </Button>
           </div>
         </div>
       </section>

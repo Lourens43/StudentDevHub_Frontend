@@ -6,79 +6,153 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Code2, User, LogOut } from "lucide-react";
-import { Link, useNavigate } from "react-router-dom";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Code2, LogOut, Menu, User } from "lucide-react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useUser } from "@/contexts/UserContext";
+import { cn } from "@/lib/utils";
+
+const navItems = [
+  { to: "/tracks", label: "Tracks" },
+  { to: "/resources", label: "Resources" },
+  { to: "/projects", label: "Projects" },
+  { to: "/activities", label: "Activities" },
+];
 
 export function Navigation() {
   const { user, logout } = useUser();
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleLogout = () => {
     logout();
     navigate("/");
   };
 
+  const isActive = (path) => location.pathname.startsWith(path);
+
   return (
-    <header className="border-b bg-white/80 backdrop-blur sticky top-0 z-50">
+    <header className="sticky top-0 z-50 border-b bg-white/70 backdrop-blur supports-[backdrop-filter]:bg-white/60">
       <div className="container mx-auto px-4">
         <div className="flex h-16 items-center justify-between">
-          {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
-              <Code2 className="w-5 h-5 text-white" />
+          {/* Brand */}
+          <Link to="/" className="flex items-center gap-2">
+            <div className="grid h-9 w-9 place-items-center rounded-lg bg-gradient-to-br from-blue-600 to-indigo-600 text-white shadow-sm">
+              <Code2 className="h-5 w-5" />
             </div>
-            <span className="text-xl font-bold">
-              <span className="text-blue-700">StudentDev</span> Hub
+            <span className="text-lg font-extrabold tracking-tight">
+              <span className="bg-gradient-to-r from-blue-700 to-indigo-700 bg-clip-text text-transparent">StudentDev</span>{" "}
+              <span className="text-gray-900">Hub</span>
             </span>
           </Link>
 
-          {/* Simple Navigation */}
-          <nav className="hidden md:flex items-center space-x-6">
-            <Link to="/tracks" className="text-gray-600 hover:text-gray-900">
-              Tracks
-            </Link>
-            <Link to="/resources" className="text-gray-600 hover:text-gray-900">
-              Resources
-            </Link>
-            <Link to="/projects" className="text-gray-600 hover:text-gray-900">
-              Projects
-            </Link>
+          {/* Desktop nav */}
+          <nav className="hidden md:flex items-center gap-2">
+            {navItems.map((item) => (
+              <Link
+                key={item.to}
+                to={item.to}
+                className={cn(
+                  "rounded-md px-3 py-2 text-sm font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-100",
+                  isActive(item.to) && "text-gray-900 bg-gray-100"
+                )}
+              >
+                {item.label}
+              </Link>
+            ))}
           </nav>
 
-          {/* User Actions */}
-          {user ? (
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="ghost" className="flex items-center gap-2">
-                  <User className="w-4 h-4" />
-                  {user.firstName} {user.lastName}
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end">
-                <DropdownMenuItem asChild>
+          {/* Desktop actions */}
+          <div className="hidden md:flex items-center gap-2">
+            {user ? (
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="ghost" className="flex items-center gap-2">
+                    <User className="h-4 w-4" />
+                    {user.firstName} {user.lastName}
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end">
+                  <DropdownMenuItem asChild>
+                    <Link to="/dashboard">Dashboard</Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem asChild>
+                    <Link to="/profile">Profile</Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem onClick={handleLogout} className="text-red-600">
+                    <LogOut className="mr-2 h-4 w-4" /> Logout
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            ) : (
+              <>
+                <Button variant="ghost" asChild>
                   <Link to="/dashboard">Dashboard</Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link to="/profile">Profile</Link>
-                </DropdownMenuItem>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem onClick={handleLogout}>
-                  <LogOut className="w-4 h-4 mr-2" />
-                  Logout
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-          ) : (
-            <div className="flex items-center gap-2">
-              <Button variant="ghost" asChild>
-                <Link to="/dashboard">Dashboard</Link>
-              </Button>
-              <Button asChild>
-                <Link to="/login">Login</Link>
-              </Button>
-            </div>
-          )}
+                </Button>
+                <Button asChild>
+                  <Link to="/login">Login</Link>
+                </Button>
+              </>
+            )}
+          </div>
+
+          {/* Mobile menu */}
+          <div className="md:hidden">
+            <Sheet>
+              <SheetTrigger asChild>
+                <Button variant="ghost" size="icon" aria-label="Open menu">
+                  <Menu className="h-5 w-5" />
+                </Button>
+              </SheetTrigger>
+              <SheetContent side="right" className="w-80">
+                <div className="flex items-center gap-2">
+                  <div className="grid h-8 w-8 place-items-center rounded-md bg-gradient-to-br from-blue-600 to-indigo-600 text-white">
+                    <Code2 className="h-4 w-4" />
+                  </div>
+                  <span className="text-base font-bold">StudentDev Hub</span>
+                </div>
+                <div className="mt-6 grid gap-1">
+                  {navItems.map((item) => (
+                    <Link
+                      key={item.to}
+                      to={item.to}
+                      className={cn(
+                        "block rounded-md px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100",
+                        isActive(item.to) && "bg-gray-100 text-gray-900"
+                      )}
+                    >
+                      {item.label}
+                    </Link>
+                  ))}
+                </div>
+                <div className="mt-6 border-t pt-6 grid gap-2">
+                  {user ? (
+                    <>
+                      <Button variant="secondary" asChild>
+                        <Link to="/dashboard">Dashboard</Link>
+                      </Button>
+                      <Button variant="outline" asChild>
+                        <Link to="/profile">Profile</Link>
+                      </Button>
+                      <Button variant="destructive" onClick={handleLogout}>
+                        <LogOut className="mr-2 h-4 w-4" /> Logout
+                      </Button>
+                    </>
+                  ) : (
+                    <>
+                      <Button variant="secondary" asChild>
+                        <Link to="/dashboard">Dashboard</Link>
+                      </Button>
+                      <Button asChild>
+                        <Link to="/login">Login</Link>
+                      </Button>
+                    </>
+                  )}
+                </div>
+              </SheetContent>
+            </Sheet>
+          </div>
         </div>
       </div>
     </header>

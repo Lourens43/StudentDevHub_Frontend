@@ -78,8 +78,12 @@ export default function Activities() {
                   </Badge>
                 </div>
 
-                <CardTitle><HighlightStudentDev text={event.title} /></CardTitle>
-                <CardDescription><HighlightStudentDev text={event.description} /></CardDescription>
+                <CardTitle>
+                  <HighlightStudentDev text={event.title} />
+                </CardTitle>
+                <CardDescription>
+                  <HighlightStudentDev text={event.description} />
+                </CardDescription>
               </CardHeader>
 
               <CardContent>

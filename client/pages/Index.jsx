@@ -22,15 +22,25 @@ export default function Index() {
 
         <div className="container mx-auto max-w-6xl px-4 py-24 md:py-32 text-center">
           <h1 className="mx-auto max-w-none text-7xl font-extrabold leading-none tracking-tight sm:text-8xl md:text-9xl lg:text-[10rem] xl:text-[12rem]">
-            <span className="text-blue-700">StudentDev</span> <span className="text-gray-900">Hub</span>
+            <span className="text-blue-700">StudentDev</span>{" "}
+            <span className="text-gray-900">Hub</span>
           </h1>
           <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <Button size="lg" className="px-8 shadow-lg hover:shadow-xl" asChild>
+            <Button
+              size="lg"
+              className="px-8 shadow-lg hover:shadow-xl"
+              asChild
+            >
               <Link to="/login">
                 Get Started <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </Button>
-            <Button size="lg" variant="outline" className="px-8 border-gray-300 text-gray-700 hover:bg-gray-50" asChild>
+            <Button
+              size="lg"
+              variant="outline"
+              className="px-8 border-gray-300 text-gray-700 hover:bg-gray-50"
+              asChild
+            >
               <Link to="/tracks">Browse Tracks</Link>
             </Button>
           </div>
@@ -51,7 +61,9 @@ export default function Index() {
                   <Coffee className="h-6 w-6 text-orange-600" />
                 </div>
                 <CardTitle>Java</CardTitle>
-                <CardDescription>Backend development with Spring Boot</CardDescription>
+                <CardDescription>
+                  Backend development with Spring Boot
+                </CardDescription>
               </CardHeader>
               <CardContent className="mt-auto">
                 <Button className="w-full shadow-md hover:shadow-lg" asChild>

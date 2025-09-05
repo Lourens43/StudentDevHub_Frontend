@@ -7,7 +7,11 @@ export function Layout({ children }) {
       <main className="flex-1">{children}</main>
       <footer className="border-t bg-white/80 backdrop-blur">
         <div className="container mx-auto px-4 py-6 text-xs text-gray-600 flex items-center justify-between">
-          <p>© {new Date().getFullYear()} <span className="text-blue-700">StudentDev</span> Hub. All rights reserved.</p>
+          <p>
+            © {new Date().getFullYear()}{" "}
+            <span className="text-blue-700">StudentDev</span> Hub. All rights
+            reserved.
+          </p>
         </div>
       </footer>
     </div>

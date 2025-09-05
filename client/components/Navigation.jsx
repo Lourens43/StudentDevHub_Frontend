@@ -40,7 +40,8 @@ export function Navigation() {
               <Code2 className="h-5 w-5" />
             </div>
             <span className="text-lg font-extrabold tracking-tight">
-              <span className="text-blue-700">StudentDev</span> <span className="text-gray-900">Hub</span>
+              <span className="text-blue-700">StudentDev</span>{" "}
+              <span className="text-gray-900">Hub</span>
             </span>
           </Link>
 
@@ -74,7 +75,9 @@ export function Navigation() {
                     <div className="grid h-8 w-8 place-items-center rounded-md bg-gradient-to-br from-blue-600 to-indigo-600 text-white">
                       <Code2 className="h-4 w-4" />
                     </div>
-                    <span className="text-base font-bold"><span className="text-blue-700">StudentDev</span> Hub</span>
+                    <span className="text-base font-bold">
+                      <span className="text-blue-700">StudentDev</span> Hub
+                    </span>
                   </div>
                   <div className="mt-6 grid gap-1">
                     {navItems.map((item) => (
@@ -130,7 +133,10 @@ export function Navigation() {
                       <Link to="/profile">Profile</Link>
                     </DropdownMenuItem>
                     <DropdownMenuSeparator />
-                    <DropdownMenuItem onClick={handleLogout} className="text-red-600">
+                    <DropdownMenuItem
+                      onClick={handleLogout}
+                      className="text-red-600"
+                    >
                       <LogOut className="mr-2 h-4 w-4" /> Logout
                     </DropdownMenuItem>
                   </DropdownMenuContent>
